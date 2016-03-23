@@ -41,7 +41,10 @@
 
 								
 									&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在第一次接触多线程的时候，很多小伙伴可能知道多个线程可以并发工作，但是不知道多线">
-<meta property="og:updated_time" content="2016-03-22T16:38:47.515Z">
+<meta property="og:image" content="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/J7VUxFJ5m4oEQ0j2E11kTLP.qn3rOWujNfI3jGzeoeU!/r/dHIBAAAAAAAA">
+<meta property="og:image" content="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/7rfd6lbzHGP3Pa3r2kWHs0wDBNliDp4PN9ISu2GtAYw!/r/dHEBAAAAAAAA">
+<meta property="og:image" content="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/w1jSZY*K6dHkkrzOmetxwsLuCztQeZzJWWaW3IuPh7w!/r/dHABAAAAAAAA">
+<meta property="og:updated_time" content="2016-03-23T02:39:21.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类多线程的单线程之探索多线程">
 <meta name="twitter:description" content="类多线程的单线程之探索多线程 | Gragon Atlas
@@ -60,6 +63,7 @@
 
 								
 									&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在第一次接触多线程的时候，很多小伙伴可能知道多个线程可以并发工作，但是不知道多线">
+<meta name="twitter:image" content="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/J7VUxFJ5m4oEQ0j2E11kTLP.qn3rOWujNfI3jGzeoeU!/r/dHIBAAAAAAAA">
   
   
     <link rel="icon" href="/favicon.png">
@@ -94,7 +98,7 @@
         
           <a class="main-nav-link" href="/">Home</a>
         
-          <a class="main-nav-link" href="/categories/����">Essay</a>
+          <a class="main-nav-link" href="/Essay">Essay</a>
         
       </nav>
       <nav id="sub-nav">
@@ -387,11 +391,20 @@ public class DrawThread extends Thread {
 
 										</textarea></div>
 										<p>&nbsp;&nbsp;&nbsp;&nbsp;然后效果就是</p>
-										<img href="/2016/03/23/类多线程的单线程之探索多线程/thread1.png" align="center">
+										<div align="center">
+										<img src="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/J7VUxFJ5m4oEQ0j2E11kTLP.qn3rOWujNfI3jGzeoeU!/r/dHIBAAAAAAAA" align="center">
+										</div>
+										
 										<p align="center" class="title2">图一</p>
-										<img href="/2016/03/23/类多线程的单线程之探索多线程/thread2.png" align="center">
+										
+										<div align="center">
+										<img src="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/7rfd6lbzHGP3Pa3r2kWHs0wDBNliDp4PN9ISu2GtAYw!/r/dHEBAAAAAAAA" align="center">
+										</div>
 										<p align="center" class="title2">图二</p>
-										<img href="/2016/03/23/类多线程的单线程之探索多线程/thread3.png" align="center">
+										
+										<div align="center">
+										<img src="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/w1jSZY*K6dHkkrzOmetxwsLuCztQeZzJWWaW3IuPh7w!/r/dHABAAAAAAAA" align="center">
+										</div>
 										<p align="center" class="title2">图三</p>
 										<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结果是，不仅小球的颜色会改变，而且还会留下其他小球颜色的“残影”，那么这到底是为什么呢？</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过分析java多线程的实现，我们可以提出这么一个假设，假设其实程序在一瞬间只能执行一个任务，但是它可以将多个任务分解成一个个碎片，按照一定的顺序轮流执行。由于这个“一瞬间”十分短暂，对于人类来说，这样的方式执行的效果几乎就是多个任务同时进行。如果是这样，就可以非常好的解释了这个现象。现在我们来用假设和实验事实互相证明：
@@ -426,7 +439,7 @@ public void run() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/23/类多线程的单线程之探索多线程/" data-id="cim3ntg3q0001j8pe8pnxsmn8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/23/类多线程的单线程之探索多线程/" data-id="cim48xv37000178pen01apv1a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
@@ -520,7 +533,7 @@ public void run() {
   
     <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/categories/����" class="mobile-nav-link">Essay</a>
+    <a href="/Essay" class="mobile-nav-link">Essay</a>
   
 </nav>
     
