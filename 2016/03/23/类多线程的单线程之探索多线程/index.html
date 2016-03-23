@@ -44,7 +44,7 @@
 <meta property="og:image" content="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/J7VUxFJ5m4oEQ0j2E11kTLP.qn3rOWujNfI3jGzeoeU!/r/dHIBAAAAAAAA">
 <meta property="og:image" content="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/7rfd6lbzHGP3Pa3r2kWHs0wDBNliDp4PN9ISu2GtAYw!/r/dHEBAAAAAAAA">
 <meta property="og:image" content="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/w1jSZY*K6dHkkrzOmetxwsLuCztQeZzJWWaW3IuPh7w!/r/dHABAAAAAAAA">
-<meta property="og:updated_time" content="2016-03-23T02:39:21.232Z">
+<meta property="og:updated_time" content="2016-03-23T06:23:27.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类多线程的单线程之探索多线程">
 <meta name="twitter:description" content="类多线程的单线程之探索多线程 | Gragon Atlas
@@ -147,12 +147,12 @@
 			}
 			
 			.java {
-				width: 80%;
-				height: 180px;
+				width: 100%;
+				height: 300px;
 			}
 			
 			.code {
-				width: 80%;
+				width: 100%;
 			}
 			
 			.title2{
@@ -435,13 +435,13 @@ public void run() {
 										</div>
 										<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当线程1执行到①的时候，系统切换到了线程2，线程2也执行了①，由于我之前设定的是每个球的颜色是随机的，所以当系统切换回线程1的时候，再去执行①后面语句时，画出来的球的颜色就和线程②的小球是一样的了，这也就是为什么图二里面最左边的球颜色会变成最右边的球的颜色了。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当线程1执行到②的时候，系统又切换到了线程2，线程2执行了①，然后当系统再次切换回线程1的时候，本来执行②后面的语句来抹去上一个球，但是由于颜色变成了线程2的小球的颜色，便画出了一个颜色和线程2小球一样的影子。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个实例告诉我们，其实多线程不是完全同时进行的，电脑也无法在同一时刻做那么多任务，所以当多个线程按照特定的权打成碎片，系统按照一定顺序轮流完成碎片，这便是我们看到的多线程。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个实例告诉我们，其实多线程不是完全同时进行的，电脑也无法在同一时刻做那么多任务，所以当多个线程按照特定的权打成碎片，系统按照一定顺序轮流完成碎片，这便是我们看到的多线程。知道事实的我们是不是可以自己动手模仿着写一个类似功能的算法呢？</p>
 </div></body>
 </html>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/23/类多线程的单线程之探索多线程/" data-id="cim4gjsb100019gpeoxhzx9q3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/23/类多线程的单线程之探索多线程/" data-id="cim4gs3b60001o0pergbzpfoa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
