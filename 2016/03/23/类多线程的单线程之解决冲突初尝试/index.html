@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>类多线程的单线程之解决冲突初尝试 | Gragon Atlas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="类多线程的单线程之解决冲突初尝试 | Gragon Atlas
+
+			
+		
+
+	
+
+
+									
+    	——对线程冲突的尝试性主观能动的处理
+    
+
+								
+
+								
+									&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前我们一起探索了多线程实现奥秘，知道原理后，我们就可以根据原理来解决">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类多线程的单线程之解决冲突初尝试">
+<meta property="og:url" content="http://yoursite.com/2016/03/23/类多线程的单线程之解决冲突初尝试/index.html">
+<meta property="og:site_name" content="Gragon Atlas">
+<meta property="og:description" content="类多线程的单线程之解决冲突初尝试 | Gragon Atlas
+
+			
+		
+
+	
+
+
+									
+    	——对线程冲突的尝试性主观能动的处理
+    
+
+								
+
+								
+									&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前我们一起探索了多线程实现奥秘，知道原理后，我们就可以根据原理来解决">
+<meta property="og:image" content="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/yJk.8OBISLfmr4b2BZt0y0vu5YnwuoEQ45WWfp*b6u4!/r/dOQAAAAAAAAA">
+<meta property="og:updated_time" content="2016-03-23T08:22:08.111Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="类多线程的单线程之解决冲突初尝试">
+<meta name="twitter:description" content="类多线程的单线程之解决冲突初尝试 | Gragon Atlas
+
+			
+		
+
+	
+
+
+									
+    	——对线程冲突的尝试性主观能动的处理
+    
+
+								
+
+								
+									&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之前我们一起探索了多线程实现奥秘，知道原理后，我们就可以根据原理来解决">
+<meta name="twitter:image" content="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/yJk.8OBISLfmr4b2BZt0y0vu5YnwuoEQ45WWfp*b6u4!/r/dOQAAAAAAAAA">
+  
+  
+    <link rel="icon" href="http://b168.photo.store.qq.com/psb?/V11NtM1x2NEtgV/aW8kMBTtpX8egpdCgwk5ll1k1Qos231IUV4u84dQukA!/b/dIgBL2QAAQAA&bo=WAI6AgAAAAABAEU!&rf=viewer_4&t=5">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Gragon Atlas</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">to be continue...</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/Essay">Essay</a>
+        
+          <a class="main-nav-link" href="/Essay">Code</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-类多线程的单线程之解决冲突初尝试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/23/类多线程的单线程之解决冲突初尝试/" class="article-date">
+  <time datetime="2016-03-23T07:42:40.000Z" itemprop="datePublished">2016-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      类多线程的单线程之解决冲突初尝试
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <html>
+
+	<head>
+<title>类多线程的单线程之解决冲突初尝试 | Gragon Atlas</title>
+<style type="text/css">
+			<!-- #subtitle1 {
+				color: #B34DB3;
+				text-align: right;
+			}
+			
+			.java {
+				width: 100%;
+				height: 300px;
+			}
+			
+			.code {
+				width: 100%;
+			}
+			
+			.title2{
+				color: #ff2200;
+			}
+			-->
+		</style>
+
+	</head>
+<body>
+<header class="article-header">
+									<h2 id="subtitle1">
+    	——对线程冲突的尝试性主观能动的处理
+    </h2>
+
+								</header>
+
+								<div class="article-entry" itemprop="articleBody">
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之前我们一起探索了多线程实现奥秘，知道原理后，我们就可以根据原理来解决之前那个画球的问题。既然各个线程被打碎成了碎片，这些碎片虽然还是具有电脑逻辑的完整性，但是已经不具备人类思维逻辑完整性了，所以它会把我们认为是一体的代码拆开，按照它自己的逻辑组合，所以难免导致程序逻辑上出现问题，虽然计算机并没有出错。所以，我们可以把我们自己认为是逻辑统一且不可分割的部分作为一个“模块”，这些模块在一定程度上保留其完整性的执行。所以，首先我们可以尝试来完成一个简单的“模块”，在此之前，为了在一个线程里画n多个球（n和点击按钮次数有关），我们先建一个类：</p>
+									<div class="code" align="center">
+										<textarea readonly="readonly" name="code" class="java">
+package com.ktn20160322.thread;
+
+import java.awt.Color;
+
+/**
+ * * 用于展示多线程冲突和单线程实现多线程功能的程序的储存小球信息的类
+ * 
+ * @author hzkxma
+ * 
+ */
+public class Ball {
+
+	/**
+	 * 小球的颜色
+	 */
+	public Color color;
+	/**
+	 * @param x
+	 *            圆外切正方向的左上角横坐标
+	 * @param y
+	 *            圆外切正方形的左上角纵坐标
+	 * @param x1
+	 *            为擦去上一个圆二记录的坐标
+	 * @param y1
+	 *            为擦去上一个圆二记录的坐标
+	 */
+	public int x = 0, y = 0, x1, y1;
+}
+
+该类可以储存小球的坐标和颜色。然后我们将画所用小球的部分作为一块，清除所有小球的作为一块：
+package com.ktn20160322.thread;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.ArrayList;
+
+/**
+ * 用于展示多线程冲突和单线程实现多线程功能的程序的线程
+ * 
+ * @author pmsmall
+ * 
+ */
+public class DrawThread extends Thread {
+
+	/**
+	 * 从中间面板获取的画笔
+	 */
+	private Graphics g;
+
+	/**
+	 * @param width
+	 *            圆的半径
+	 * @param height
+	 *            圆的半径
+	 */
+	private int width = 20, height = 20;
+
+	/**
+	 * 一个小球队列，储存所有的小球
+	 */
+	public ArrayList<ball> ball;
+
+	/**
+	 * 构造函数，初始化线程，传入一个画笔
+	 * 
+	 * @param g
+	 *            中间面板的画笔
+	 */
+	public DrawThread(Graphics g) {
+		this.g = g;
+		ball = new ArrayList<>();
+	}
+
+	/**
+	 * 先绘制一个小球，暂停一段时间后再擦去，再绘制将其画在下一个位置
+	 */
+	public void run() {
+		while (true) {
+			drawBall();
+			try {
+				Thread.sleep(500);
+				g.setColor(Color.WHITE);
+				clearBall();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+	/**
+	 * 绘制小球的方法，访问ball队列里面所有元素并一一画出来
+	 */
+	public void drawBall() {
+		for (int i = 0; i < ball.size(); i++) {
+			g.setColor(ball.get(i).color);
+			g.fillOval(ball.get(i).x, ball.get(i).y, width, height);
+			ball.get(i).x1 = ball.get(i).x;
+			ball.get(i).y1 = ball.get(i).y;
+			ball.get(i).x += 5;
+			ball.get(i).y += 5;
+		}
+	}
+
+	/**
+	 * 消除小球的方法，访问ball队列里面所有元素并一一消除
+	 */
+	public void clearBall() {
+		for (int i = 0; i < ball.size(); i++) {
+			g.fillOval(ball.get(i).x1, ball.get(i).y1, width, height);
+		}
+	}
+}
+
+
+										</ball></textarea>
+									</div>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然计算机为了实现多进程，不可避免地还是把它打碎成碎片，但是由于是一个线程去完成的，所以在一定程度上保留了逻辑完整性。</p>
+									<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以，我们还需要在监听器里面做一些修改，只初始化一个监听器，每次点击按钮就初始化一个小球，并添加进线程的小球队列：</p>
+									<div class="code" align="center">
+										<textarea readonly="readonly" name="code" class="java">
+package com.ktn20160322.thread;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+/**
+ * 用于展示多线程冲突和单线程实现多线程功能的程序的监听器
+ * 
+ * @author pmsmall
+ * 
+ */
+public class Listener implements ActionListener {
+
+	/**
+	 * 申明线程，只初始化一次，即用一个线程画所有的球
+	 */
+	private DrawThread drawthread;
+
+	/**
+	 * 将画笔传给线程g
+	 * 
+	 * @param g
+	 */
+	public void setGraphics(Graphics g) {
+		drawthread = new DrawThread(g);
+		drawthread.start();
+	}
+
+	/**
+	 * 当按钮被点击的时候，初始化一个新的小球，随机一个颜色赋给小球对象的颜色属性，将球添加到线程的小球队列里面
+	 */
+	public void actionPerformed(ActionEvent e) {
+		Ball ball = new Ball();
+		ball.color = new Color((float) Math.random(), (float) Math.random(),
+				(float) Math.random());
+		drawthread.ball.add(ball);
+	}
+}
+
+
+										</textarea></div>
+										<p>&nbsp;&nbsp;&nbsp;&nbsp;然后激动人心的时刻到了，我们试着运行一下：</p>
+										<div align="center">
+										<img src="http://r.photo.store.qq.com/psb?/V11NtM1x3UlXe7/yJk.8OBISLfmr4b2BZt0y0vu5YnwuoEQ45WWfp*b6u4!/r/dOQAAAAAAAAA" align="center">
+										</div>
+										
+										<p align="center" class="title2">图四</p>
+										
+										<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小球的颜色没有乱，而且也没有“残影”！</p>
+										<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然只是一些小小的改动，但是初次尝试的效果显而易见。</p>
+										
+</div></body>
+</html>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/23/类多线程的单线程之解决冲突初尝试/" data-id="cim4l0yvm0001c0pej06j6t1c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/23/类多线程的单线程之探索多线程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">类多线程的单线程之探索多线程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/博客/" style="font-size: 10px;">博客</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/03/23/类多线程的单线程之解决冲突初尝试/">类多线程的单线程之解决冲突初尝试</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/23/类多线程的单线程之探索多线程/">类多线程的单线程之探索多线程</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Frank Kang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Essay" class="mobile-nav-link">Essay</a>
+  
+    <a href="/Essay" class="mobile-nav-link">Code</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
