@@ -66,6 +66,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-第一批博文解释" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/24/第一批博文解释/" class="article-date">
+  <time datetime="2016-03-24T05:16:31.000Z" itemprop="datePublished">2016-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/24/第一批博文解释/">第一批博文解释</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##对于线程部分博文的解释</p>
+<hr>
+<p><em>第一部分是线程相关博客的连载</em></p>
+<blockquote>
+<ul>
+<li>探索多线程</li>
+<li>初步尝试解决线程冲突</li>
+<li>思考与再度尝试</li>
+<li>线程不安全问题与对象锁的探索</li>
+<li>单线程实现多线程功能</li>
+</ul>
+</blockquote>
+<p><img src="http://f.hiphotos.baidu.com/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=1b0dc3d30d2442a7ba03f5f7b02ac62e/6159252dd42a2834b1c7cf5b59b5c9ea15cebf79.jpg" alt="cmd-markdowm-logo"></p>
+<blockquote>
+<ul>
+<li>申明，第一部分的博文里面的代码使专门为小白设计，形象生动的解释了多线程之间为什么冲突，直白的说就是为了这几篇文章编写的代码，请大家不要纠结于这些代码在生活生产中是否有用，仅供理论研究</li>
+</ul>
+</blockquote>
+<p>##对于第一篇博文的解释</p>
+<p>第一部分，我让每个线程同时操作同一个对象Graphics g，意图就是想说明线程冲突往往和访问同一物理地址有关，或者对于java来说，是使用同一个对象的引用副本有关。<br>每一个球颜色随机就是为了区分每一个线程。<br>通过小球的颜色画错来说明线程冲突的本质。</p>
+<p>##对于第二篇博文的解释</p>
+<p>由于不同线程访问同一个对象会造成一些问题，有时候这些问题是致命的，所以对于初学者来说，可以选择适当避免多线程同时操作一个对象，这里用一个线程专门操作一个对象来作为示例（本例以一个线程专门使用Graphics g来画图）。<br>所以这是对于线程冲突的初步尝试</p>
+<p>##对于后面几篇关于线程的博文</p>
+<p>to be continuing</p>
+<p>敬请期待~</p>
+<blockquote>
+<ul>
+<li>后续会连载java数据回收机制等理论相关博客，也会连载数据结构与算法的博文。</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/03/24/第一批博文解释/" data-id="cim5v2rzs0001xcpezcl7asp5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-类多线程的单线程之解决冲突初尝试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/03/23/类多线程的单线程之解决冲突初尝试/" class="article-date">
@@ -306,9 +374,11 @@ public class Listener implements ActionListener {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/23/类多线程的单线程之解决冲突初尝试/" data-id="cim51xl8e0004uspe4pwv0683" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/23/类多线程的单线程之解决冲突初尝试/" data-id="cim5v2s0j0005xcpeelewrccs" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
+
     </footer>
   </div>
   
@@ -643,7 +713,7 @@ public void run() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/23/类多线程的单线程之探索多线程/" data-id="cim51xl7y0001uspeuuidj0fv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/23/类多线程的单线程之探索多线程/" data-id="cim5v2s0i0004xcpero8hqm70" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
@@ -690,7 +760,7 @@ public void run() {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/02/hello-world/" data-id="cim51xl7j0000uspe0px5f5xe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/03/02/hello-world/" data-id="cim5v2rzk0000xcpex6cs4vdv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -712,7 +782,7 @@ public void run() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
     </div>
   </div>
 
@@ -722,7 +792,7 @@ public void run() {
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/博客/" style="font-size: 10px;">博客</a>
+      <a href="/tags/博客/" style="font-size: 20px;">博客</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
     </div>
   </div>
 
@@ -742,6 +812,10 @@ public void run() {
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/24/第一批博文解释/">第一批博文解释</a>
+          </li>
         
           <li>
             <a href="/2016/03/23/类多线程的单线程之解决冲突初尝试/">类多线程的单线程之解决冲突初尝试</a>
